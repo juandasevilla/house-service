@@ -2,7 +2,7 @@ package com.example.houseservice.domain.model;
 
 import com.example.houseservice.domain.exceptions.DescriptionMaxSizeExceededException;
 import com.example.houseservice.domain.exceptions.NameMaxSizeExceededException;
-import com.example.houseservice.domain.utils.constants.DomainConstants;
+import com.example.houseservice.domain.utils.DomainConstants;
 
 import java.util.Objects;
 

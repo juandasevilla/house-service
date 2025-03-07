@@ -1,4 +1,4 @@
-package com.example.houseservice.domain.utils.constants;
+package com.example.houseservice.domain.utils;
 
 public class DomainConstants {
     private DomainConstants(){
