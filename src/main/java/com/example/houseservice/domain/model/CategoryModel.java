@@ -2,6 +2,7 @@ package com.example.houseservice.domain.model;
 
 import com.example.houseservice.domain.exceptions.DescriptionMaxSizeExceededException;
 import com.example.houseservice.domain.exceptions.NameMaxSizeExceededException;
+import com.example.houseservice.domain.exceptions.NullOrSpaceException;
 import com.example.houseservice.domain.utils.DomainConstants;
 
 import java.util.Objects;
@@ -17,6 +18,13 @@ public class CategoryModel {
         }
         if (description.length() > 90) {
             throw new DescriptionMaxSizeExceededException();
+        }
+        if (name == null || name.trim().isEmpty()){
+            throw new NullOrSpaceException();
+        }
+
+        if (description == null || description.trim().isEmpty()){
+            throw new NullOrSpaceException();
         }
         this.id = id;
         this.name = Objects.requireNonNull(name, DomainConstants.FIELD_NAME_NULL_MESSAGE);

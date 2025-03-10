@@ -4,6 +4,7 @@ import com.example.houseservice.domain.exceptions.CategoryAlreadyExistsException
 import com.example.houseservice.domain.model.CategoryModel;
 import com.example.houseservice.domain.ports.in.CategoryServicePort;
 import com.example.houseservice.domain.ports.out.CategoryPersistencePort;
+import java.util.List;
 
 public class CategoryUseCase implements CategoryServicePort {
     private final CategoryPersistencePort categoryPersistencePort;
@@ -19,5 +20,10 @@ public class CategoryUseCase implements CategoryServicePort {
             throw new CategoryAlreadyExistsException();
         }
         categoryPersistencePort.saveCategory(categoryModel);
+    }
+
+    @Override
+    public List<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc) {
+        return categoryPersistencePort.getCategories(page, size, orderAsc);
     }
 }
