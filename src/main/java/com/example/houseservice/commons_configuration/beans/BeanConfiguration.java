@@ -6,6 +6,12 @@ import com.example.houseservice.category.domain.usecases.CategoryUseCase;
 import com.example.houseservice.category.infrastructure.adapters.persistence.CategoryPersistenceAdapter;
 import com.example.houseservice.category.infrastructure.mappers.CategoryEntityMapper;
 import com.example.houseservice.category.infrastructure.repositories.mysql.CategoryRepository;
+import com.example.houseservice.city.domain.ports.in.CityServicePort;
+import com.example.houseservice.city.domain.ports.out.CityPersistencePort;
+import com.example.houseservice.city.domain.usecases.CityUseCase;
+import com.example.houseservice.city.infrastructure.adapters.persistence.CityPersistenceAdapter;
+import com.example.houseservice.city.infrastructure.mappers.CityEntityMapper;
+import com.example.houseservice.city.infrastructure.repositories.mysql.CityRepository;
 import com.example.houseservice.department.domain.ports.in.DepartmentServicePort;
 import com.example.houseservice.department.domain.ports.out.DepartmentPersistencePort;
 import com.example.houseservice.department.domain.usecases.DepartmentUseCase;
@@ -23,6 +29,8 @@ public class BeanConfiguration {
     private final CategoryEntityMapper categoryEntityMapper;
     private final DepartmentRepository departmentRepository;
     private final DepartmentEntityMapper departmentEntityMapper;
+    private final CityRepository cityRepository;
+    private final CityEntityMapper cityEntityMapper;
 
     public CategoryPersistencePort categoryPersistencePort() {
         return new CategoryPersistenceAdapter(categoryRepository, categoryEntityMapper);
@@ -40,5 +48,14 @@ public class BeanConfiguration {
     @Bean
     public DepartmentServicePort departmentServicePort() {
         return new DepartmentUseCase(departmentPersistencePort());
+    }
+
+    public CityPersistencePort cityPersistencePort() {
+        return new CityPersistenceAdapter(cityRepository, cityEntityMapper);
+    }
+
+    @Bean
+    public CityServicePort cityServicePort() {
+        return new CityUseCase(cityPersistencePort());
     }
 }
