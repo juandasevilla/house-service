@@ -1,5 +1,7 @@
 package com.example.houseservice.category.infrastructure.adapters.persistence;
 
+import com.example.houseservice.category.domain.utils.Page;
+import com.example.houseservice.category.infrastructure.entities.CategoryEntity;
 import com.example.houseservice.commons_configuration.utils.Constants;
 import com.example.houseservice.category.domain.model.CategoryModel;
 import com.example.houseservice.category.domain.ports.out.CategoryPersistencePort;
@@ -38,5 +40,20 @@ public class CategoryPersistenceAdapter implements CategoryPersistencePort {
         if (orderAsc) pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).ascending());
         else pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).descending());
         return categoryEntityMapper.entityListToModelList(categoryRepository.findAll(pagination).getContent());
+    }
+
+
+    @Override
+    public Page<CategoryModel> getCategoriesPage(Integer page, Integer size, boolean orderAsc) {
+        Pageable pagination;
+        if (orderAsc) {
+            pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).ascending());
+        } else {
+            pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).descending());
+        }
+        org.springframework.data.domain.Page<CategoryEntity> categoryEntityPage = categoryRepository.findAll(pagination);
+        List<CategoryModel> categoryModels = categoryEntityMapper.entityListToModelList(categoryEntityPage.getContent());
+        long totalObjects = categoryRepository.count();
+        return new Page<>(categoryModels, page, size, orderAsc, totalObjects);
     }
 }

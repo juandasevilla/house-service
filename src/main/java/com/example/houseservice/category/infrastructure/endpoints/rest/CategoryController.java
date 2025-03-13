@@ -4,6 +4,7 @@ import com.example.houseservice.category.application.dto.request.SaveCategoryReq
 import com.example.houseservice.category.application.dto.response.CategoryResponse;
 import com.example.houseservice.category.application.dto.response.SaveCategoryResponse;
 import com.example.houseservice.category.application.services.CategoryService;
+import com.example.houseservice.category.domain.utils.Page;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,12 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponse>> getAllCategories(@RequestParam Integer page, @RequestParam Integer size,
                                                                    @RequestParam boolean orderAsc) {
         return ResponseEntity.ok(categoryService.getCategories(page, size, orderAsc));
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<Page<CategoryResponse>> getCategoriesPage(@RequestParam Integer page, @RequestParam Integer size,
+                                                                    @RequestParam boolean orderAsc) {
+        return ResponseEntity.ok(categoryService.getCategoriesPage(page, size, orderAsc));
     }
 
 }

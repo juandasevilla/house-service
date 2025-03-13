@@ -4,6 +4,8 @@ import com.example.houseservice.category.domain.exceptions.CategoryAlreadyExists
 import com.example.houseservice.category.domain.model.CategoryModel;
 import com.example.houseservice.category.domain.ports.in.CategoryServicePort;
 import com.example.houseservice.category.domain.ports.out.CategoryPersistencePort;
+import com.example.houseservice.category.domain.utils.Page;
+
 import java.util.List;
 
 public class CategoryUseCase implements CategoryServicePort {
@@ -25,5 +27,10 @@ public class CategoryUseCase implements CategoryServicePort {
     @Override
     public List<CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc) {
         return categoryPersistencePort.getCategories(page, size, orderAsc);
+    }
+
+    @Override
+    public Page<CategoryModel> getCategoriesPage(Integer page, Integer size, boolean orderAsc) {
+        return categoryPersistencePort.getCategoriesPage(page, size, orderAsc);
     }
 }
