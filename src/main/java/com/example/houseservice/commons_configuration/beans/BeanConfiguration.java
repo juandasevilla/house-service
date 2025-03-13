@@ -1,11 +1,11 @@
 package com.example.houseservice.commons_configuration.beans;
 
-import com.example.houseservice.category.domain.ports.in.CategoryServicePort;
-import com.example.houseservice.category.domain.ports.out.CategoryPersistencePort;
-import com.example.houseservice.category.domain.usecases.CategoryUseCase;
-import com.example.houseservice.category.infrastructure.adapters.persistence.CategoryPersistenceAdapter;
-import com.example.houseservice.category.infrastructure.mappers.CategoryEntityMapper;
-import com.example.houseservice.category.infrastructure.repositories.mysql.CategoryRepository;
+import com.example.houseservice.domain.ports.in.CategoryServicePort;
+import com.example.houseservice.domain.ports.out.CategoryPersistencePort;
+import com.example.houseservice.domain.usecases.CategoryUseCase;
+import com.example.houseservice.infrastructure.adapters.persistence.CategoryPersistenceAdapter;
+import com.example.houseservice.infrastructure.mappers.CategoryEntityMapper;
+import com.example.houseservice.infrastructure.repositories.mysql.CategoryRepository;
 import com.example.houseservice.city.domain.ports.in.CityServicePort;
 import com.example.houseservice.city.domain.ports.out.CityPersistencePort;
 import com.example.houseservice.city.domain.usecases.CityUseCase;
