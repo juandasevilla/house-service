@@ -1,6 +1,6 @@
-package com.example.houseservice.department.domain.ports.in;
+package com.example.houseservice.domain.ports.in;
 
-import com.example.houseservice.department.domain.model.DepartmentModel;
+import com.example.houseservice.domain.model.DepartmentModel;
 import java.util.List;
 
 public interface DepartmentServicePort {

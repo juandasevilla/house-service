@@ -1,12 +1,12 @@
-package com.example.houseservice.department.application.services.impl;
+package com.example.houseservice.application.services.impl;
 
 import com.example.houseservice.commons_configuration.utils.Constants;
-import com.example.houseservice.department.application.dto.request.SaveDepartmentRequest;
-import com.example.houseservice.department.application.dto.response.DepartmentResponse;
-import com.example.houseservice.department.application.dto.response.SaveDepartmentResponse;
-import com.example.houseservice.department.application.mappers.DepartmentDtoMapper;
-import com.example.houseservice.department.application.services.DepartmentService;
-import com.example.houseservice.department.domain.ports.in.DepartmentServicePort;
+import com.example.houseservice.application.dto.request.SaveDepartmentRequest;
+import com.example.houseservice.application.dto.response.DepartmentResponse;
+import com.example.houseservice.application.dto.response.SaveDepartmentResponse;
+import com.example.houseservice.application.mappers.DepartmentDtoMapper;
+import com.example.houseservice.application.services.DepartmentService;
+import com.example.houseservice.domain.ports.in.DepartmentServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

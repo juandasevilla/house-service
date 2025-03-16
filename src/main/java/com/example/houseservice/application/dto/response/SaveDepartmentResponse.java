@@ -1,4 +1,4 @@
-package com.example.houseservice.department.application.dto.response;
+package com.example.houseservice.application.dto.response;
 
 import java.time.LocalDateTime;
 

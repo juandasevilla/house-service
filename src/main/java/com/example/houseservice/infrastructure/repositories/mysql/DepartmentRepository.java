@@ -1,6 +1,6 @@
-package com.example.houseservice.department.infrastructure.repositories.mysql;
+package com.example.houseservice.infrastructure.repositories.mysql;
 
-import com.example.houseservice.department.infrastructure.entities.DepartmentEntity;
+import com.example.houseservice.infrastructure.entities.DepartmentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

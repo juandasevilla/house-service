@@ -1,4 +1,4 @@
-package com.example.houseservice.department.infrastructure.entities;
+package com.example.houseservice.infrastructure.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

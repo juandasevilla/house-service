@@ -1,6 +1,6 @@
-package com.example.houseservice.department.domain.ports.out;
+package com.example.houseservice.domain.ports.out;
 
-import com.example.houseservice.department.domain.model.DepartmentModel;
+import com.example.houseservice.domain.model.DepartmentModel;
 import java.util.List;
 
 public interface DepartmentPersistencePort {

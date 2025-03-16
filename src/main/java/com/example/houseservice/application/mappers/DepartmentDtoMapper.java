@@ -1,8 +1,8 @@
-package com.example.houseservice.department.application.mappers;
+package com.example.houseservice.application.mappers;
 
-import com.example.houseservice.department.application.dto.request.SaveDepartmentRequest;
-import com.example.houseservice.department.application.dto.response.DepartmentResponse;
-import com.example.houseservice.department.domain.model.DepartmentModel;
+import com.example.houseservice.application.dto.request.SaveDepartmentRequest;
+import com.example.houseservice.application.dto.response.DepartmentResponse;
+import com.example.houseservice.domain.model.DepartmentModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

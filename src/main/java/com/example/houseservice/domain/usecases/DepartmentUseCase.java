@@ -1,9 +1,10 @@
-package com.example.houseservice.department.domain.usecases;
+package com.example.houseservice.domain.usecases;
 
-import com.example.houseservice.department.domain.exceptions.DepartmentAlreadyExistsException;
-import com.example.houseservice.department.domain.model.DepartmentModel;
-import com.example.houseservice.department.domain.ports.in.DepartmentServicePort;
-import com.example.houseservice.department.domain.ports.out.DepartmentPersistencePort;
+import com.example.houseservice.domain.exceptions.DepartmentAlreadyExistsException;
+import com.example.houseservice.domain.exceptions.ObjectAlreadyExistsException;
+import com.example.houseservice.domain.model.DepartmentModel;
+import com.example.houseservice.domain.ports.in.DepartmentServicePort;
+import com.example.houseservice.domain.ports.out.DepartmentPersistencePort;
 import java.util.List;
 
 public class DepartmentUseCase implements DepartmentServicePort {

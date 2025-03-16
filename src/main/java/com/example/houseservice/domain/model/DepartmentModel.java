@@ -1,8 +1,8 @@
-package com.example.houseservice.department.domain.model;
+package com.example.houseservice.domain.model;
 
-import com.example.houseservice.department.domain.exceptions.DescriptionMaxSizeExceededException;
-import com.example.houseservice.department.domain.exceptions.NameMaxSizeExceededException;
-import com.example.houseservice.department.domain.exceptions.NullOrSpaceException;
+import com.example.houseservice.domain.exceptions.DepartmentDescriptionMaxSizeExceededException;
+import com.example.houseservice.domain.exceptions.DepartmentNameMaxSizeExceededException;
+import com.example.houseservice.domain.exceptions.DepartmentNullOrSpaceException;
 
 public class DepartmentModel {
     private Long id;
@@ -11,17 +11,17 @@ public class DepartmentModel {
 
     public DepartmentModel(Long id, String name, String description) {
         if (name.length() > 50) {
-            throw new NameMaxSizeExceededException();
+            throw new DepartmentNameMaxSizeExceededException();
         }
         if (description.length() > 120) {
-            throw new DescriptionMaxSizeExceededException();
+            throw new DepartmentDescriptionMaxSizeExceededException();
         }
         if (name == null || name.trim().isEmpty()){
-            throw new NullOrSpaceException();
+            throw new DepartmentNullOrSpaceException();
         }
 
         if (description == null || description.trim().isEmpty()){
-            throw new NullOrSpaceException();
+            throw new DepartmentNullOrSpaceException();
         }
         this.id = id;
         this.name = name;
@@ -42,14 +42,14 @@ public class DepartmentModel {
 
     public void setName(String name) {
         if (name.length() > 50) {
-            throw new NameMaxSizeExceededException();
+            throw new DepartmentNameMaxSizeExceededException();
         }
         this.name = name;
     }
 
     public void setDescription(String description) {
         if (description.length() > 120) {
-            throw new DescriptionMaxSizeExceededException();
+            throw new DepartmentDescriptionMaxSizeExceededException();
         }
         this.description = description;
     }

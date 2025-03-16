@@ -1,7 +1,7 @@
-package com.example.houseservice.department.infrastructure.mappers;
+package com.example.houseservice.infrastructure.mappers;
 
-import com.example.houseservice.department.domain.model.DepartmentModel;
-import com.example.houseservice.department.infrastructure.entities.DepartmentEntity;
+import com.example.houseservice.domain.model.DepartmentModel;
+import com.example.houseservice.infrastructure.entities.DepartmentEntity;
 import org.mapstruct.Mapper;
 import java.util.List;
 

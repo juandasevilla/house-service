@@ -1,10 +1,10 @@
-package com.example.houseservice.department.infrastructure.adapters.persistence;
+package com.example.houseservice.infrastructure.adapters.persistence;
 
 import com.example.houseservice.commons_configuration.utils.Constants;
-import com.example.houseservice.department.domain.model.DepartmentModel;
-import com.example.houseservice.department.domain.ports.out.DepartmentPersistencePort;
-import com.example.houseservice.department.infrastructure.mappers.DepartmentEntityMapper;
-import com.example.houseservice.department.infrastructure.repositories.mysql.DepartmentRepository;
+import com.example.houseservice.domain.model.DepartmentModel;
+import com.example.houseservice.domain.ports.out.DepartmentPersistencePort;
+import com.example.houseservice.infrastructure.mappers.DepartmentEntityMapper;
+import com.example.houseservice.infrastructure.repositories.mysql.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
