@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,5 +38,10 @@ public class DepartmentPersistenceAdapter implements DepartmentPersistencePort {
         if (orderAsc) pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).ascending());
         else pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).descending());
         return departmentEntityMapper.entityListToModelList(departmentRepository.findAll(pagination).getContent());
+    }
+
+    @Override
+    public Optional<DepartmentModel> findById(Long id) {
+        return departmentRepository.findById(id).map(departmentEntityMapper::entityToModel);
     }
 }

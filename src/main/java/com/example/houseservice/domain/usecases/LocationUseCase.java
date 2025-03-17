@@ -1,9 +1,10 @@
-package com.example.houseservice.location.domain.usecases;
+package com.example.houseservice.domain.usecases;
 
-import com.example.houseservice.location.domain.model.LocationModel;
-import com.example.houseservice.location.domain.ports.out.LocationPersistencePort;
+import com.example.houseservice.domain.model.LocationModel;
+import com.example.houseservice.domain.ports.in.LocationServicePort;
+import com.example.houseservice.domain.ports.out.LocationPersistencePort;
 
-public class LocationUseCase {
+public class LocationUseCase implements LocationServicePort {
     private final LocationPersistencePort locationPersistencePort;
 
     public LocationUseCase(LocationPersistencePort locationPersistencePort) {
