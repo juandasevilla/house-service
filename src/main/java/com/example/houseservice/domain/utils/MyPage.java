@@ -3,7 +3,7 @@ package com.example.houseservice.domain.utils;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Page <T>{
+public class MyPage<T>{
     private List<T> content;
     private int page;
     private int size;
@@ -12,7 +12,7 @@ public class Page <T>{
     private boolean orderAsc;
     private long totalObjects;
 
-    public Page(List<T> content, int page, int size, boolean orderAsc, long totalObjects) {
+    public MyPage(List<T> content, int page, int size, boolean orderAsc, long totalObjects) {
         this.page = page;
         this.size = size;
         this.orderAsc = orderAsc;

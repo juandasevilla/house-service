@@ -6,7 +6,7 @@ import com.example.houseservice.application.dto.response.SaveCategoryResponse;
 import com.example.houseservice.application.mappers.CategoryDtoMapper;
 import com.example.houseservice.application.services.CategoryService;
 import com.example.houseservice.domain.model.CategoryModel;
-import com.example.houseservice.domain.utils.Page;
+import com.example.houseservice.domain.utils.MyPage;
 import com.example.houseservice.commons_configuration.utils.Constants;
 import com.example.houseservice.domain.ports.in.CategoryServicePort;
 import lombok.RequiredArgsConstructor;
@@ -34,9 +34,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Page<CategoryResponse> getCategoriesPage(Integer page, Integer size, boolean orderAsc) {
-        Page<CategoryModel> categoryModelPage = categoryServicePort.getCategoriesPage(page, size, orderAsc);
-        List<CategoryResponse> categoryResponses = categoryDtoMapper.modelListToResponseList(categoryModelPage.getContent());
-        return new Page<>(categoryResponses, page, size, orderAsc, categoryModelPage.getTotalObjects());
+    public MyPage<CategoryResponse> getCategoriesPage(Integer page, Integer size, boolean orderAsc) {
+        MyPage<CategoryModel> categoryModelMyPage = categoryServicePort.getCategoriesPage(page, size, orderAsc);
+        List<CategoryResponse> categoryResponses = categoryDtoMapper.modelListToResponseList(categoryModelMyPage.getContent());
+        return new MyPage<>(categoryResponses, page, size, orderAsc, categoryModelMyPage.getTotalObjects());
     }
 }
