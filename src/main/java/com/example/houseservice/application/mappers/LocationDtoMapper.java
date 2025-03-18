@@ -1,0 +1,14 @@
+package com.example.houseservice.application.mappers;
+
+import com.example.houseservice.application.dto.request.SaveLocationRequest;
+import com.example.houseservice.application.dto.response.LocationResponse;
+import com.example.houseservice.domain.model.LocationModel;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
+
+@Mapper(componentModel = "spring",
+        unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface LocationDtoMapper {
+    LocationModel requestToModel(SaveLocationRequest saveLocationRequest);
+    LocationResponse modelToResponse(LocationModel locationModel);
+}
