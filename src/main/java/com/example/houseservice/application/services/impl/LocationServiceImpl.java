@@ -5,6 +5,8 @@ import com.example.houseservice.application.dto.response.SaveLocationResponse;
 import com.example.houseservice.application.mappers.LocationDtoMapper;
 import com.example.houseservice.application.services.LocationService;
 import com.example.houseservice.commons_configuration.utils.Constants;
+import com.example.houseservice.domain.exceptions.CityIsRequiredException;
+import com.example.houseservice.domain.exceptions.DepartmentIsRequiredException;
 import com.example.houseservice.domain.model.CityModel;
 import com.example.houseservice.domain.model.DepartmentModel;
 import com.example.houseservice.domain.model.LocationModel;
@@ -28,10 +30,10 @@ public class LocationServiceImpl implements LocationService {
     public SaveLocationResponse save(SaveLocationRequest request) {
         LocationModel locationModel = locationDtoMapper.requestToModel(request);
         CityModel cityModel = cityPersistencePort.findById(request.getCityId())
-                .orElseThrow(() -> new IllegalArgumentException("City not found"));
+                .orElseThrow((CityIsRequiredException::new));
         locationModel.setCity(cityModel);
         DepartmentModel departmentModel = departmentPersistencePort.findById(request.getDepartmentId())
-                .orElseThrow(() -> new IllegalArgumentException("Department not found"));
+                .orElseThrow(() -> new DepartmentIsRequiredException());
         locationModel.setDepartment(departmentModel);
         locationServicePort.saveLocation(locationModel);
         return new SaveLocationResponse(Constants.SAVE_LOCATION_RESPONSE_MESSAGE, LocalDateTime.now());

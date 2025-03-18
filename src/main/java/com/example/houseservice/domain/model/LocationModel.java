@@ -1,5 +1,9 @@
 package com.example.houseservice.domain.model;
 
+import com.example.houseservice.domain.exceptions.CityIsRequiredException;
+import com.example.houseservice.domain.exceptions.DepartmentIsRequiredException;
+import com.example.houseservice.domain.exceptions.LocationNullOrSpaceException;
+
 public class LocationModel {
     private Long id;
     private DepartmentModel department;
@@ -8,6 +12,10 @@ public class LocationModel {
     private String description;
 
     public LocationModel(Long id, DepartmentModel department, CityModel city, String name, String description) {
+        if (name == null || name.trim().isEmpty()){
+            throw new LocationNullOrSpaceException();
+        }
+
         this.id = id;
         this.department = department;
         this.city = city;

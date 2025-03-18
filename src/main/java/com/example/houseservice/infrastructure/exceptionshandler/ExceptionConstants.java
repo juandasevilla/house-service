@@ -11,4 +11,7 @@ public final class ExceptionConstants {
     public static final String DEPARTMENT_DESCRIPTION_MAX_SIZE_MESSAGE = "The description of the department can not exceed 90 characters";
     public static final String DEPARTMENT_EXISTS_EXCEPTION = "The department already exists";
     public static final String DEPARTMENT_NULL_OR_SPACE_EXCEPTION = "The name and description of the department can not be null or empty";
+    public static final String CITY_IS_REQUIRED = "City is required and must exists";
+    public static final String DEPARTMENT_IS_REQUIRED = "Department is required and must exists";
+    public static final String LOCATION_NULL_OR_SPACE_EXCEPTION = "The name of the location can not be null or empty";
 }

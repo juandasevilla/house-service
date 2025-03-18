@@ -73,6 +73,6 @@ public class BeanConfiguration {
 
     @Bean
     public LocationServicePort locationServicePort() {
-        return new LocationUseCase(locationPersistencePort());
+        return new LocationUseCase(locationPersistencePort(), cityPersistencePort(), departmentPersistencePort());
     }
 }
