@@ -1,6 +1,7 @@
 package com.example.houseservice.application.services.impl;
 
 import com.example.houseservice.application.dto.request.SaveLocationRequest;
+import com.example.houseservice.application.dto.response.LocationResponse;
 import com.example.houseservice.application.dto.response.SaveLocationResponse;
 import com.example.houseservice.application.mappers.LocationDtoMapper;
 import com.example.houseservice.application.services.LocationService;
@@ -13,10 +14,13 @@ import com.example.houseservice.domain.model.LocationModel;
 import com.example.houseservice.domain.ports.in.LocationServicePort;
 import com.example.houseservice.domain.ports.out.CityPersistencePort;
 import com.example.houseservice.domain.ports.out.DepartmentPersistencePort;
+import com.example.houseservice.domain.utils.MyPage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.xml.stream.Location;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +41,12 @@ public class LocationServiceImpl implements LocationService {
         locationModel.setDepartment(departmentModel);
         locationServicePort.saveLocation(locationModel);
         return new SaveLocationResponse(Constants.SAVE_LOCATION_RESPONSE_MESSAGE, LocalDateTime.now());
+    }
+
+    @Override
+    public MyPage<LocationResponse> getLocationsByName(Integer page, Integer size, boolean orderAsc, String name) {
+        MyPage<LocationModel> locationModelMyPage = locationServicePort.getLocationsByName(page, size, orderAsc, name);
+        List<LocationResponse> locationResponses = locationDtoMapper.modelListToResponseList(locationModelMyPage.getContent());
+        return new MyPage<>(locationResponses, page, size, orderAsc, locationModelMyPage.getTotalObjects());
     }
 }
