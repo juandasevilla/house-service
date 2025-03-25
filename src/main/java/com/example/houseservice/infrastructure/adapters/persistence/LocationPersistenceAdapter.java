@@ -19,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -46,5 +47,10 @@ public class LocationPersistenceAdapter implements LocationPersistencePort {
         List<LocationModel> locationModels = locationEntityMapper.entityListToModelList(locationEntities.getContent());
         long totalObjects = locationRepository.count();
         return new MyPage<>(locationModels, page, size, orderAsc, totalObjects);
+    }
+
+    @Override
+    public Optional<LocationModel> findById(Long id) {
+        return locationRepository.findById(id).map(locationEntityMapper::entityToModel);
     }
 }
