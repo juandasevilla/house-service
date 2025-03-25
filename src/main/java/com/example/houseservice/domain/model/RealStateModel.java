@@ -1,5 +1,7 @@
 package com.example.houseservice.domain.model;
 
+import com.example.houseservice.domain.exceptions.CategoryIsRequiredException;
+import com.example.houseservice.domain.exceptions.LocationIsRequiredException;
 import com.example.houseservice.domain.exceptions.RealStatePublishDateException;
 import com.example.houseservice.domain.exceptions.RealStateRequiredFieldException;
 
@@ -106,16 +108,10 @@ public class RealStateModel {
     }
 
     public void setLocation(LocationModel location) {
-        if (location == null){
-            throw new RealStateRequiredFieldException();
-        }
         this.location = location;
     }
 
     public void setCategory(CategoryModel category) {
-        if (category == null){
-            throw new RealStateRequiredFieldException();
-        }
         this.category = category;
     }
 
