@@ -3,7 +3,7 @@ package com.example.houseservice.domain.usecases;
 import com.example.houseservice.domain.exceptions.CategoryAlreadyExistsException;
 import com.example.houseservice.domain.model.CategoryModel;
 import com.example.houseservice.domain.ports.out.CategoryPersistencePort;
-import com.example.houseservice.domain.utils.Page;
+import com.example.houseservice.domain.utils.MyPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -48,15 +48,15 @@ class CategoryUseCaseTest {
                 new CategoryModel(1L, "Category 1", "Description 1"),
                 new CategoryModel(2L, "Category 2", "Description 2")
         );
-        Page<CategoryModel> expectedPage = new Page<>(categories, page, size, orderAsc, totalObjects);
+        MyPage<CategoryModel> expectedMyPage = new MyPage<>(categories, page, size, orderAsc, totalObjects);
 
-        when(categoryPersistencePort.getCategoriesPage(page, size, orderAsc)).thenReturn(expectedPage);
+        when(categoryPersistencePort.getCategoriesPage(page, size, orderAsc)).thenReturn(expectedMyPage);
 
         // Act
-        Page<CategoryModel> result = categoryUseCase.getCategoriesPage(page, size, orderAsc);
+        MyPage<CategoryModel> result = categoryUseCase.getCategoriesPage(page, size, orderAsc);
 
         // Assert
-        assertEquals(expectedPage, result);
+        assertEquals(expectedMyPage, result);
     }
 
 }
