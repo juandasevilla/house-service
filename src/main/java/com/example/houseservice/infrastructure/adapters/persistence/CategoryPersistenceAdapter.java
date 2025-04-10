@@ -16,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -56,5 +57,10 @@ public class CategoryPersistenceAdapter implements CategoryPersistencePort {
         List<CategoryModel> categoryModels = categoryEntityMapper.entityListToModelList(categoryEntityPage.getContent());
         long totalObjects = categoryRepository.count();
         return new MyPage<>(categoryModels, page, size, orderAsc, totalObjects);
+    }
+
+    @Override
+    public Optional<CategoryModel> findById(Long id) {
+        return categoryRepository.findById(id).map(categoryEntityMapper::entityToModel);
     }
 }

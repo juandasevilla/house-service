@@ -14,4 +14,8 @@ public final class ExceptionConstants {
     public static final String CITY_IS_REQUIRED = "City is required and must exists";
     public static final String DEPARTMENT_IS_REQUIRED = "Department is required and must exists";
     public static final String LOCATION_NULL_OR_SPACE_EXCEPTION = "The name of the location can not be null or empty";
+    public static final String LOCATION_IS_REQUIRED = "Location is required and must exists";
+    public static final String CATEGORY_IS_REQUIRED = "Category is required and must exists";
+    public static final String REAL_STATE_PUBLISH_DATE_EXCEPTION = "The publish date of the real state can not be later 30 days from now";
+    public static final String REAL_STATE_REQUIRED_FIELD_EXCEPTION = "The name, description, price, location, rooms, bathrooms, category and publish date of the real state can not be null or empty";
 }
