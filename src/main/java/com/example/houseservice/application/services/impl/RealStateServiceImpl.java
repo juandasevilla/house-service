@@ -29,11 +29,15 @@ public class RealStateServiceImpl implements RealStateService {
     @Override
     public SaveRealStateResponse save(SaveRealStateRequest request){
         RealStateModel realStateModel = realStateDtoMapper.requestToModel(request);
+
         CategoryModel categoryModel = categoryPersistencePort.findById(request.getCategoryId())
                 .orElseThrow(() -> new CategoryIsRequiredException());
+
         realStateModel.setCategory(categoryModel);
+
         LocationModel locationModel = locationPersistencePort.findById(request.getLocationId())
                 .orElseThrow(() -> new LocationIsRequiredException());
+
         realStateModel.setLocation(locationModel);
         realStateServicePort.saveRealState(realStateModel);
         return new SaveRealStateResponse(Constants.SAVE_REAL_STATE_RESPONSE_MESSAGE, LocalDateTime.now());
