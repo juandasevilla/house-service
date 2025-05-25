@@ -18,20 +18,9 @@ public class MyPage<T>{
         this.orderAsc = orderAsc;
         this.totalElements = content.size();
         this.totalPages = (int) Math.ceil((double) totalObjects / size);
-        this.content = paginate(content);
+        this.content = content;
         this.totalObjects = totalObjects;
 
-    }
-
-    private List<T> paginate(List<T> content) {
-        if (!orderAsc) {
-            content = content.stream()
-                    .sorted((a, b) -> -1) // Assuming T implements Comparable, otherwise provide a Comparator
-                    .collect(Collectors.toList());
-        }
-        int fromIndex = Math.min(page * size, content.size());
-        int toIndex = Math.min((page + 1) * size, content.size());
-        return content.subList(fromIndex, toIndex);
     }
 
     public List<T> getContent() {

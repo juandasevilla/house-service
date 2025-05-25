@@ -18,8 +18,11 @@ public class RealStateModel {
     private CategoryModel category;
     private LocalDate publishDate;
     private String status;
+    private Long userId;
 
-    public RealStateModel(Long id, String name, String description, Integer rooms, Integer bathrooms, Float price, LocationModel location, CategoryModel category, LocalDate publishDate, String status) {
+    public RealStateModel(Long id, String name, String description, Integer rooms,
+                          Integer bathrooms, Float price, LocationModel location,
+                          CategoryModel category, LocalDate publishDate, String status, Long userId) {
         this.id = id;
         setName(name);
         setDescription(description);
@@ -30,6 +33,7 @@ public class RealStateModel {
         setCategory(category);
         setPublishDate(publishDate);
         setStatus(status);
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -70,6 +74,10 @@ public class RealStateModel {
 
     public String getStatus() {
         return status;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 
     public void setName(String name) {

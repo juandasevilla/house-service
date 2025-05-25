@@ -56,6 +56,11 @@ public class CategoryPersistenceAdapter implements CategoryPersistencePort {
         Page<CategoryEntity> categoryEntityPage = categoryRepository.findAll(pagination);
         List<CategoryModel> categoryModels = categoryEntityMapper.entityListToModelList(categoryEntityPage.getContent());
         long totalObjects = categoryRepository.count();
+        System.out.println("conteng: " + categoryModels);
+        System.out.println("Página solicitada: " + page);
+        System.out.println("Tamaño solicitado: " + size);
+        System.out.println("Total de elementos: " + totalObjects);
+        System.out.println("Elementos en esta página: " + categoryModels.size());
         return new MyPage<>(categoryModels, page, size, orderAsc, totalObjects);
     }
 

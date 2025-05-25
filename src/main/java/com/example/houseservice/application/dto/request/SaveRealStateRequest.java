@@ -5,7 +5,7 @@ import com.example.houseservice.domain.model.LocationModel;
 
 import java.time.LocalDate;
 
-public record SaveRealStateRequest(String name, String description, Integer rooms, Integer bathrooms, Float price, Long locationId, Long categoryId, LocalDate publishDate, String status) {
+public record SaveRealStateRequest(String name, String description, Integer rooms, Integer bathrooms, Float price, Long locationId, Long categoryId, LocalDate publishDate, String status, Long userId) {
 
         public Long getLocationId() {
             return locationId;

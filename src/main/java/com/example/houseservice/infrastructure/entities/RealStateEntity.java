@@ -30,4 +30,7 @@ public class RealStateEntity {
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private CategoryEntity category;
+
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 }
