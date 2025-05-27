@@ -2,6 +2,7 @@ package com.example.houseservice.infrastructure.exceptionshandler;
 
 import com.example.houseservice.domain.exceptions.CityIsRequiredException;
 import com.example.houseservice.domain.exceptions.DepartmentIsRequiredException;
+import com.example.houseservice.domain.exceptions.LocationAlreadyExistsException;
 import com.example.houseservice.domain.exceptions.LocationNullOrSpaceException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,11 @@ public class LocationControllerAdvisor {
     @ExceptionHandler(LocationNullOrSpaceException.class)
     public ResponseEntity<ExceptionResponse> handleLocationNullOrSpaceException(LocationNullOrSpaceException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.LOCATION_NULL_OR_SPACE_EXCEPTION, LocalDateTime.now()));
+    }
+
+    @ExceptionHandler(LocationAlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleLocationAlreadyExistsException(LocationAlreadyExistsException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.LOCATION_ALREADY_EXISTS_EXCEPTION, LocalDateTime.now()));
     }
 
 }

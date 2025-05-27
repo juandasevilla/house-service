@@ -1,7 +1,10 @@
 package com.example.houseservice.domain.usecases;
 
+import com.example.houseservice.domain.exceptions.CategoryAlreadyExistsException;
 import com.example.houseservice.domain.exceptions.CityIsRequiredException;
 import com.example.houseservice.domain.exceptions.DepartmentIsRequiredException;
+import com.example.houseservice.domain.exceptions.LocationAlreadyExistsException;
+import com.example.houseservice.domain.model.CategoryModel;
 import com.example.houseservice.domain.model.LocationModel;
 import com.example.houseservice.domain.ports.in.LocationServicePort;
 import com.example.houseservice.domain.ports.out.CityPersistencePort;
@@ -24,6 +27,16 @@ public class LocationUseCase implements LocationServicePort {
         if(!cityPersistencePort.findById(locationModel.getCity().getId()).isPresent()) {
             throw new CityIsRequiredException();
         }
+
+        LocationModel existingLocation = locationPersistencePort.findByNameAndCityId(
+                locationModel.getName(),
+                locationModel.getCity().getId()
+        );
+
+        if (existingLocation != null) {
+            throw new LocationAlreadyExistsException(); // Necesitas crear esta excepción
+        }
+
         locationPersistencePort.saveLocation(locationModel);
     }
 

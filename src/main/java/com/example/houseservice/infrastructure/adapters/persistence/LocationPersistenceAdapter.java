@@ -53,4 +53,11 @@ public class LocationPersistenceAdapter implements LocationPersistencePort {
     public Optional<LocationModel> findById(Long id) {
         return locationRepository.findById(id).map(locationEntityMapper::entityToModel);
     }
+
+    @Override
+    public LocationModel findByNameAndCityId(String name, Long cityId) {
+        return locationRepository.findByNameIgnoreCaseAndCityId(name, cityId)
+                .map(locationEntityMapper::entityToModel)
+                .orElse(null); // Devuelve null si no encuentra la ubicación
+    }
 }

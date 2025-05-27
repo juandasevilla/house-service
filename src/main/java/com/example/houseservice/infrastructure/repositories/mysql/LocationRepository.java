@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface LocationRepository extends JpaRepository<LocationEntity, Long> {
     Optional<LocationEntity> findByName(String name);
     Page<LocationEntity> findByCityNameContainingIgnoreCaseOrCityDepartmentNameContainingIgnoreCase(String cityName, String departmentName, Pageable pageable);
+    Optional<LocationEntity> findByNameIgnoreCaseAndCityId(String name, Long cityId);
 }
