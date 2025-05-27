@@ -14,7 +14,7 @@ public interface RealStateRepository extends JpaRepository<RealStateEntity, Long
             "AND (:rooms IS NULL OR r.rooms = :rooms) " +
             "AND (:locationName IS NULL OR " +
             "     r.location.city.name LIKE %:locationName% OR " +
-            "     r.location.department.name LIKE %:locationName%) " +
+            "     r.location.city.department.name LIKE %:locationName%) " +
             "AND (:minPrice IS NULL OR r.price >= :minPrice) " +
             "AND (:maxPrice IS NULL OR r.price <= :maxPrice)")
     Page<RealStateEntity> findByFilters(String categoryName,

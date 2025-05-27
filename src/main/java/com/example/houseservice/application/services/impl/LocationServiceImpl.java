@@ -36,9 +36,6 @@ public class LocationServiceImpl implements LocationService {
         CityModel cityModel = cityPersistencePort.findById(request.getCityId())
                 .orElseThrow((CityIsRequiredException::new));
         locationModel.setCity(cityModel);
-        DepartmentModel departmentModel = departmentPersistencePort.findById(request.getDepartmentId())
-                .orElseThrow(() -> new DepartmentIsRequiredException());
-        locationModel.setDepartment(departmentModel);
         locationServicePort.saveLocation(locationModel);
         return new SaveLocationResponse(Constants.SAVE_LOCATION_RESPONSE_MESSAGE, LocalDateTime.now());
     }

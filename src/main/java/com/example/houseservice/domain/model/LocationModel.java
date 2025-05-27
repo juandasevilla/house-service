@@ -6,18 +6,16 @@ import com.example.houseservice.domain.exceptions.LocationNullOrSpaceException;
 
 public class LocationModel {
     private Long id;
-    private DepartmentModel department;
     private CityModel city;
     private String name;
     private String description;
 
-    public LocationModel(Long id, DepartmentModel department, CityModel city, String name, String description) {
+    public LocationModel(Long id, CityModel city, String name, String description) {
         if (name == null || name.trim().isEmpty()){
             throw new LocationNullOrSpaceException();
         }
 
         this.id = id;
-        this.department = department;
         this.city = city;
         this.name = name;
         this.description = description;
@@ -25,10 +23,6 @@ public class LocationModel {
 
     public Long getId() {
         return id;
-    }
-
-    public DepartmentModel getDepartment() {
-        return department;
     }
 
     public CityModel getCity() {
@@ -55,7 +49,4 @@ public class LocationModel {
         this.city = cityModel;
     }
 
-    public void setDepartment(DepartmentModel departmentModel) {
-        this.department = departmentModel;
-    }
 }

@@ -24,9 +24,6 @@ public class LocationUseCase implements LocationServicePort {
         if(!cityPersistencePort.findById(locationModel.getCity().getId()).isPresent()) {
             throw new CityIsRequiredException();
         }
-        if (!departmentPersistencePort.findById(locationModel.getDepartment().getId()).isPresent()) {
-            throw new DepartmentIsRequiredException();
-        }
         locationPersistencePort.saveLocation(locationModel);
     }
 

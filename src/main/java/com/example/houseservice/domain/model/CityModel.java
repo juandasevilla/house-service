@@ -10,8 +10,9 @@ public class CityModel {
     private Long id;
     private String name;
     private String description;
+    DepartmentModel department;
 
-    public CityModel(Long id, String name, String description) {
+    public CityModel(Long id, String name, String description, DepartmentModel department) {
         if (name.length() > 50) {
             throw new ObjectNameMaxSizeExceededException();
         }
@@ -28,6 +29,7 @@ public class CityModel {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.department = department;
     }
 
     public Long getId() {
@@ -42,6 +44,10 @@ public class CityModel {
         return description;
     }
 
+    public DepartmentModel getDepartment() {
+        return department;
+    }
+
     public void setName(String name) {
         if (name.length() > 50) {
             throw new ObjectNameMaxSizeExceededException();
@@ -54,5 +60,9 @@ public class CityModel {
             throw new ObjectDescriptionMaxSizeExceededException();
         }
         this.description = description;
+    }
+
+    public void setDepartment(DepartmentModel departmentModel) {
+        this.department = departmentModel;
     }
 }

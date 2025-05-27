@@ -6,8 +6,12 @@ import com.example.houseservice.application.dto.response.CityResponse;
 import com.example.houseservice.application.dto.response.SaveCityResponse;
 import com.example.houseservice.application.mappers.CityDtoMapper;
 import com.example.houseservice.application.services.CityService;
+import com.example.houseservice.domain.exceptions.DepartmentIsRequiredException;
+import com.example.houseservice.domain.model.CityModel;
+import com.example.houseservice.domain.model.DepartmentModel;
 import com.example.houseservice.domain.ports.in.CityServicePort;
 import com.example.houseservice.commons_configuration.utils.Constants;
+import com.example.houseservice.domain.ports.out.DepartmentPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +23,14 @@ import java.util.List;
 public class CityServiceImpl implements CityService{
     private final CityServicePort cityServicePort;
     private final CityDtoMapper cityDtoMapper;
+    private final DepartmentPersistencePort departmentPersistencePort;
 
     @Override
     public SaveCityResponse save(SaveCityRequest request) {
+        CityModel cityModel = cityDtoMapper.requestToModel(request);
+        DepartmentModel departmentModel = departmentPersistencePort.findById(request.getDepartmentId())
+                .orElseThrow(() -> new DepartmentIsRequiredException());
+        cityModel.setDepartment(departmentModel);
         cityServicePort.SaveCity(cityDtoMapper.requestToModel(request));
         return new SaveCityResponse(Constants.SAVE_CITY_RESPONSE_MESSAGE, LocalDateTime.now());
     }

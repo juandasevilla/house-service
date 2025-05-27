@@ -17,10 +17,6 @@ public class LocationEntity {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
-    private DepartmentEntity department;
-
-    @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
     private CityEntity city;
 }

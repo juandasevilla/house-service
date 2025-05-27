@@ -43,7 +43,7 @@ public class LocationPersistenceAdapter implements LocationPersistencePort {
         } else {
             pagination = PageRequest.of(page, size, Sort.by(Constants.PAGEABLE_FIELD_NAME).descending());
         }
-        Page<LocationEntity> locationEntities = locationRepository.findByCityNameContainingIgnoreCaseOrDepartmentNameContainingIgnoreCase(name, name, pagination);
+        Page<LocationEntity> locationEntities = locationRepository.findByCityNameContainingIgnoreCaseOrCityDepartmentNameContainingIgnoreCase(name, name, pagination);
         List<LocationModel> locationModels = locationEntityMapper.entityListToModelList(locationEntities.getContent());
         long totalObjects = locationRepository.count();
         return new MyPage<>(locationModels, page, size, orderAsc, totalObjects);
