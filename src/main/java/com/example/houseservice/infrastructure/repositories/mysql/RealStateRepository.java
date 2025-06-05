@@ -24,4 +24,6 @@ public interface RealStateRepository extends JpaRepository<RealStateEntity, Long
                                         Float minPrice,
                                         Float maxPrice,
                                         Pageable pageable);
+
+    boolean existsByCategoryId(Long categoryId);
 }

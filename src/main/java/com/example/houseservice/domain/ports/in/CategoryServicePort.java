@@ -10,4 +10,5 @@ public interface CategoryServicePort {
     void saveCategory(CategoryModel categoryModel);
     List <CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc);
     MyPage<CategoryModel> getCategoriesPage(Integer page, Integer size, boolean orderAsc);
+    void deleteCategory(Long categoryId);
 }

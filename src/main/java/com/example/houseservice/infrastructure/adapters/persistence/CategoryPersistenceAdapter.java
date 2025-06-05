@@ -7,6 +7,7 @@ import com.example.houseservice.domain.model.CategoryModel;
 import com.example.houseservice.domain.ports.out.CategoryPersistencePort;
 import com.example.houseservice.infrastructure.mappers.CategoryEntityMapper;
 import com.example.houseservice.infrastructure.repositories.mysql.CategoryRepository;
+import com.example.houseservice.infrastructure.repositories.mysql.RealStateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ import java.util.Optional;
 public class CategoryPersistenceAdapter implements CategoryPersistencePort {
     private final CategoryRepository categoryRepository;
     private final CategoryEntityMapper categoryEntityMapper;
+    private final RealStateRepository realStateRepository;
 
     @Override
     public void saveCategory(CategoryModel categoryModel) {
@@ -67,5 +69,15 @@ public class CategoryPersistenceAdapter implements CategoryPersistencePort {
     @Override
     public Optional<CategoryModel> findById(Long id) {
         return categoryRepository.findById(id).map(categoryEntityMapper::entityToModel);
+    }
+
+    @Override
+    public void deleteCategory(Long id) {
+        categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean hasReferences(Long id) {
+        return realStateRepository.existsByCategoryId(id);
     }
 }

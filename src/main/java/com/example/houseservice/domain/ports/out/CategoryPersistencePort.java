@@ -12,4 +12,6 @@ public interface CategoryPersistencePort {
     List <CategoryModel> getCategories(Integer page, Integer size, boolean orderAsc);
     MyPage<CategoryModel> getCategoriesPage(Integer page, Integer size, boolean orderAsc);
     Optional<CategoryModel> findById(Long id);
+    void deleteCategory(Long id);
+    boolean hasReferences(Long id);
 }

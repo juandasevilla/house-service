@@ -54,7 +54,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Rutas específicas para este microservicio
-                        .requestMatchers("/api/v1/category/page", "/api/v1/location/page", "/api/v1/real-state").permitAll()
+                        .requestMatchers("/api/v1/category/page", "/api/v1/location/page").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/real-state").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

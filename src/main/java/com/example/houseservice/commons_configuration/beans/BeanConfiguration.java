@@ -29,7 +29,7 @@ public class BeanConfiguration {
     private final RealStateEntityMapper realStateEntityMapper;
 
     public CategoryPersistencePort categoryPersistencePort() {
-        return new CategoryPersistenceAdapter(categoryRepository, categoryEntityMapper);
+        return new CategoryPersistenceAdapter(categoryRepository, categoryEntityMapper, realStateRepository);
     }
 
     @Bean

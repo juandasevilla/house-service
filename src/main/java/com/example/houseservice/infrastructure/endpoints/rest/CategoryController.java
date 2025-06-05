@@ -2,10 +2,12 @@ package com.example.houseservice.infrastructure.endpoints.rest;
 
 import com.example.houseservice.application.dto.request.SaveCategoryRequest;
 import com.example.houseservice.application.dto.response.CategoryResponse;
+import com.example.houseservice.application.dto.response.DeleteResponse;
 import com.example.houseservice.application.dto.response.SaveCategoryResponse;
 import com.example.houseservice.application.services.CategoryService;
 import com.example.houseservice.domain.utils.MyPage;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,6 +37,12 @@ public class CategoryController {
     public ResponseEntity<MyPage<CategoryResponse>> getCategoriesPage(@RequestParam Integer page, @RequestParam Integer size,
                                                                       @RequestParam boolean orderAsc) {
         return ResponseEntity.ok(categoryService.getCategoriesPage(page, size, orderAsc));
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<DeleteResponse> deleteCategory(@PathVariable Long id) {
+        return ResponseEntity.ok(categoryService.deleteCategory(id));
     }
 
 }

@@ -11,4 +11,5 @@ public class Constants {
     public static final String SAVE_CITY_RESPONSE_MESSAGE = "City created successfully.";
     public static final String SAVE_LOCATION_RESPONSE_MESSAGE = "Location created successfully.";
     public static final String SAVE_REAL_STATE_RESPONSE_MESSAGE = "Real state created successfully.";
+    public static final String DELETE_CATEGORY_RESPONSE_MESSAGE = "Category deleted successfully.";
 }

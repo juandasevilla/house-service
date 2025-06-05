@@ -1,9 +1,6 @@
 package com.example.houseservice.infrastructure.exceptionshandler;
 
-import com.example.houseservice.domain.exceptions.CategoryAlreadyExistsException;
-import com.example.houseservice.domain.exceptions.DescriptionMaxSizeExceededException;
-import com.example.houseservice.domain.exceptions.NameMaxSizeExceededException;
-import com.example.houseservice.domain.exceptions.NullOrSpaceException;
+import com.example.houseservice.domain.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -30,5 +27,10 @@ public class ControllerAdvisor {
     @ExceptionHandler(NullOrSpaceException.class)
     public ResponseEntity<ExceptionResponse> handleNullOrSpaceException(NullOrSpaceException exception) {
         return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.NULL_OR_SPACE_EXCEPTION, LocalDateTime.now()));
+    }
+
+    @ExceptionHandler(CategoryHasReferencesException.class)
+    public ResponseEntity<ExceptionResponse> handleCategoryHasReferencesException(CategoryHasReferencesException exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(ExceptionConstants.CATEGORY_HAS_REFERENCES_EXCEPTION, LocalDateTime.now()));
     }
 }

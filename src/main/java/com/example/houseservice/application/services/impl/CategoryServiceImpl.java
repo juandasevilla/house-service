@@ -2,6 +2,7 @@ package com.example.houseservice.application.services.impl;
 
 import com.example.houseservice.application.dto.request.SaveCategoryRequest;
 import com.example.houseservice.application.dto.response.CategoryResponse;
+import com.example.houseservice.application.dto.response.DeleteResponse;
 import com.example.houseservice.application.dto.response.SaveCategoryResponse;
 import com.example.houseservice.application.mappers.CategoryDtoMapper;
 import com.example.houseservice.application.services.CategoryService;
@@ -38,5 +39,11 @@ public class CategoryServiceImpl implements CategoryService {
         MyPage<CategoryModel> categoryModelMyPage = categoryServicePort.getCategoriesPage(page, size, orderAsc);
         List<CategoryResponse> categoryResponses = categoryDtoMapper.modelListToResponseList(categoryModelMyPage.getContent());
         return new MyPage<>(categoryResponses, page, size, orderAsc, categoryModelMyPage.getTotalObjects());
+    }
+
+    @Override
+    public DeleteResponse deleteCategory(Long id) {
+        categoryServicePort.deleteCategory(id);
+        return new DeleteResponse(Constants.DELETE_CATEGORY_RESPONSE_MESSAGE, LocalDateTime.now());
     }
 }

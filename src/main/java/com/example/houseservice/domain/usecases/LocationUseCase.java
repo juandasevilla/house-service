@@ -34,7 +34,7 @@ public class LocationUseCase implements LocationServicePort {
         );
 
         if (existingLocation != null) {
-            throw new LocationAlreadyExistsException(); // Necesitas crear esta excepción
+            throw new LocationAlreadyExistsException();
         }
 
         locationPersistencePort.saveLocation(locationModel);

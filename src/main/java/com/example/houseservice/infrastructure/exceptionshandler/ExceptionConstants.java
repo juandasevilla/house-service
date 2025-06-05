@@ -19,4 +19,5 @@ public final class ExceptionConstants {
     public static final String REAL_STATE_PUBLISH_DATE_EXCEPTION = "The publish date of the real state can not be later 30 days from now";
     public static final String REAL_STATE_REQUIRED_FIELD_EXCEPTION = "The name, description, price, location, rooms, bathrooms, category and publish date of the real state can not be null or empty";
     public static final String LOCATION_ALREADY_EXISTS_EXCEPTION = "The location already exists in the city";
+    public static final String CATEGORY_HAS_REFERENCES_EXCEPTION = "The category has references and can not be deleted";
 }
