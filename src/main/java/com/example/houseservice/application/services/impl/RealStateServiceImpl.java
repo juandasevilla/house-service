@@ -53,6 +53,11 @@ public class RealStateServiceImpl implements RealStateService {
         return new MyPage<>(realStateResponseList, page, size, orderAsc, realStateModelPage.getTotalObjects());
     }
 
+    @Override
+    public boolean existsRealStateWithId(Long id) {
+        return realStateServicePort.existsRealStateWithId(id);
+    }
+
 
 
 

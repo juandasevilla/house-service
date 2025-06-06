@@ -9,4 +9,5 @@ import com.example.houseservice.domain.utils.MyPage;
 public interface RealStateService {
     SaveRealStateResponse save(SaveRealStateRequest request);
     MyPage<RealStateResponse> getRealStatesByFilter(RealStateFilter filter, Integer page, Integer size, boolean orderAsc);
+    boolean existsRealStateWithId(Long id);
 }

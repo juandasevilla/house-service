@@ -48,5 +48,10 @@ public class RealStatePersistenceAdapter implements RealStatePersistencePort {
         return new MyPage<>(realStateModels, page, size, orderAsc, realStatePage.getTotalElements());
     }
 
+    @Override
+    public boolean existsRealStateWithId(Long id) {
+        return realStateRepository.existsById(id);
+    }
+
 
 }

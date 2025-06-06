@@ -1,5 +1,6 @@
 package com.example.houseservice.commons_configuration.beans;
 
+import com.example.houseservice.infrastructure.security.ApiKeyAuthFilter;
 import com.example.houseservice.infrastructure.security.JwtAuthenticationFilter;
 import com.example.houseservice.infrastructure.security.JwtProvider;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,12 @@ public class SecurityConfig {
     @Value("${jwt.expiration:3600000}")
     private long expirationTime;
 
+    private final ApiKeyAuthFilter apiKeyAuthFilter;
+
+    public SecurityConfig(ApiKeyAuthFilter apiKeyAuthFilter) {
+        this.apiKeyAuthFilter = apiKeyAuthFilter;
+    }
+
     @Bean
     public JwtProvider jwtProvider() {
         return new JwtProvider(secretKey, expirationTime);
@@ -56,11 +63,13 @@ public class SecurityConfig {
                         // Rutas específicas para este microservicio
                         .requestMatchers("/api/v1/category/page", "/api/v1/location/page").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/real-state").permitAll()
+                        .requestMatchers("/api/v1/real-state/exists-real-state/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
+                .addFilterBefore(apiKeyAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

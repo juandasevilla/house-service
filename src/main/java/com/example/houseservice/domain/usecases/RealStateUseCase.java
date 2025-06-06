@@ -36,4 +36,9 @@ public class RealStateUseCase implements RealStateServicePort {
     public MyPage<RealStateModel> getRealStatesByFilter(RealStateFilter filter, Integer page, Integer size, boolean orderAsc) {
         return realStatePersistencePort.getRealStatesByFilter(filter,page, size, orderAsc);
     }
+
+    @Override
+    public boolean existsRealStateWithId(Long id) {
+        return realStatePersistencePort.existsRealStateWithId(id);
+    }
 }

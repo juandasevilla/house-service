@@ -50,5 +50,10 @@ public class RealStateController {
         return ResponseEntity.ok(realStateService.getRealStatesByFilter(filter, page, size, orderAsc));
     }
 
+    @GetMapping("/exists-real-state/{id}")
+    public ResponseEntity<Boolean> existsRealStateById(@PathVariable Long id){
+        return ResponseEntity.ok(realStateService.existsRealStateWithId(id));
+    }
+
 
 }
